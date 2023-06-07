@@ -1,6 +1,7 @@
-
+let jwt=require('jsonwebtoken')
 const users=require('../models/user')
 let bcrypt=require('bcrypt')
+require('dotenv').config();
 
 function isStringInvalid(string){
     if(string===undefined || string.length===0){
@@ -45,3 +46,40 @@ exports.signup=async(req,res)=>{
     }
     
 }
+
+function generateAccessToken(id){
+    return jwt.sign({userId:id},process.env.JWT_KEY);
+}
+
+exports.signin=async(req,res)=>{
+    try{
+        let {email,password}=req.body;
+        if(isStringInvalid(email)|| isStringInvalid(password)){
+            return res.json({message:"something is missing",success:false})
+        }
+
+        const user = await users.findAll({ where: { email:email } });
+        if(user.length>0){
+            bcrypt.compare(password,user[0].password,(err,result)=>{
+                if(err){
+                    throw new Error("something went wrong")
+                }
+                if(result===true){
+                    return res.json({success:true,message:"login successfull",token:generateAccessToken(user[0].id)}) 
+                    
+                }
+                else{
+                    return res.json({success:false,message:"password doesnt match"})
+                }
+            })
+            }else{
+                return json({success:false,message:"user doesnot exist"})
+            }
+        }
+
+    catch(e){
+        res.json({error:e})
+        console.log("aabj")
+    }
+}
+
