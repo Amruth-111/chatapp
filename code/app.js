@@ -5,6 +5,10 @@ const Sequelize=require('./util/databases')
 
 
 const userroutes=require('./routes/users')
+const msgroutes=require('./routes/messages')
+
+const usertable=require('./models/user')
+const msgtable=require('./models/messages')
 
 
 const app=express();
@@ -17,6 +21,11 @@ app.use(cors({
 app.use(bodyparser.json())
 
 app.use('/user',userroutes)
+app.use('/message',msgroutes)
+
+
+usertable.hasMany(msgtable)
+msgtable.belongsTo(usertable)
 
 Sequelize.sync().then(()=>{
     app.listen(8000)

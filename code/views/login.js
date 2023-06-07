@@ -18,6 +18,7 @@ async function loginpage(e){
         let data=await axios.post("http://localhost:8000/user/signin",loginObj)
             localStorage.setItem('token',data.data.token)
             alert(data.data.message);
+            console.log(data.data.message)
             console.log(data.data.token)
 
             if(data.data.success===false){
