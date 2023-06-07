@@ -10,7 +10,10 @@ const userroutes=require('./routes/users')
 const app=express();
 
 
-app.use(cors());
+app.use(cors({
+    origin:'*'
+}));
+
 app.use(bodyparser.json())
 
 app.use('/user',userroutes)
