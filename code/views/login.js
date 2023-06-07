@@ -37,6 +37,7 @@ async function loginpage(e){
             setTimeout(()=>{
                 loginError.removeChild(loginText)
             },4000)
+            window.location.href="./chat.html"
             }
            
     }catch(e){

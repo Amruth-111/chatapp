@@ -83,3 +83,7 @@ exports.signin=async(req,res)=>{
     }
 }
 
+// exports.getuser=async(req,res)=>{
+
+// }
+
