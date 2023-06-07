@@ -18,4 +18,7 @@ button.addEventListener('click',async(e)=>{
     console.log(obj)
     const response=await axios.post("http://localhost:8000/message/messagess",obj,{headers:{'Authentication':token}})
     console.log(response.data)
+    message.value=" "
+    
 })
+
