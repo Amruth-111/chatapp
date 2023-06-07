@@ -5,5 +5,6 @@ const userauthenticate=require('../middleware/auth')
 
 
 route.post("/messagess",userauthenticate.authentication,message.messages)
+route.get("/all-messages",userauthenticate.authentication,message.all_message)
 
 module.exports=route

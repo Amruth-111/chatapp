@@ -1,6 +1,7 @@
 
 const messages=require('../models/messages')
 require('dotenv').config();
+const users=require('../models/user')
 
 exports.messages=async(req,res)=>{
     try{
@@ -17,5 +18,18 @@ exports.messages=async(req,res)=>{
         console.log(e)
     }
 
+
+}
+
+exports.all_message=async(req,res)=>{
+    try{
+        console.log(users.__proto__)
+        const data=await messages.findAll({attributes:['message']},{where:{userId:req.user.id}})
+        console.log(data);
+        res.json({Data:data,success:true})
+    }catch(e){
+        console.log(e)
+        res.json({error:e,success:false})
+    }
 
 }
