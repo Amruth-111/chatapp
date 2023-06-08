@@ -1,26 +1,28 @@
 
 window.addEventListener("DOMContentLoaded",async(e)=>{
     e.preventDefault();
-    setInterval(async() => {
         let token=localStorage.getItem('token');
         let res=await axios.get("http://localhost:8000/message/all-messages",{headers:{'Authentication':token}})
-        console.log(res.data.Data.length)
-
-        console.log(res.data.Data)
-        for(let i=0;i<res.data.Data.length;i++){
-            showChatOnScreen(res.data.Data[i].message)
+        console.log(res.data)
+        const show=res.data.Data
+        for(let i=show.length-10;i<show.length;i++){
+            localStorage.setItem(show[i].id,show[i].message)  
+            showChatOnScreen(show[i].message,show[i].message)
         }
-    }, 1000);
 })
 
-
-
 console.log("sjajkXINK")
-async function showChatOnScreen(msg){
+async function showChatOnScreen(id,pmsg){
     try{
-       const parent=document.getElementById("msg")
-       const child=`</li class="text-white">${msg}</li><br>`
-       parent.innerHTML=parent.innerHTML+child
+        if(pmsg){
+            let recent=id-10
+            localStorage.removeItem(recent) 
+            localStorage.setItem(id,pmsg)
+        }
+        const msg=localStorage.getItem(id)
+        const parent=document.getElementById("msg")
+        const child=`</li class="text-white">${msg}</li><br>`
+        parent.innerHTML=parent.innerHTML+child
     }catch(err){
         console.log("error in showchatonscreen",err)
     }
@@ -39,6 +41,7 @@ button.addEventListener('click',async(e)=>{
     console.log(obj)
     const response=await axios.post("http://localhost:8000/message/messagess",obj,{headers:{'Authentication':token}})
     console.log(response.data)
+    showChatOnScreen(response.data.message.id,response.data.message.message)
     message.value=" "
     
 })

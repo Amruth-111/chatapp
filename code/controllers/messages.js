@@ -24,7 +24,7 @@ exports.messages=async(req,res)=>{
 exports.all_message=async(req,res)=>{
     try{
         console.log(users.__proto__)
-        const data=await messages.findAll({attributes:['message']},{where:{userId:req.user.id}})
+        const data=await messages.findAll()
         console.log(data);
         res.json({Data:data,success:true})
     }catch(e){

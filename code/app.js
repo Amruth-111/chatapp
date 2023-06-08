@@ -27,7 +27,7 @@ app.use('/message',msgroutes)
 usertable.hasMany(msgtable)
 msgtable.belongsTo(usertable)
 
-Sequelize.sync().then(()=>{
+Sequelize.sync({force:true}).then(()=>{
     app.listen(8000)
 }).catch(e=>{
     console.log(e)
