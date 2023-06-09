@@ -10,10 +10,9 @@ const messages=sequelize.define("messages",{
         primaryKey:true,
         autoIncrement:true
     },
-    message:{
-        type:Sequelize.STRING,
-        allowNull:false,
-    },
+    message:Sequelize.STRING,
+    groupId:Sequelize.INTEGER,
+    userName:Sequelize.STRING
 })
 
 module.exports=messages

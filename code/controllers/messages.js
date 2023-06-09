@@ -7,10 +7,13 @@ exports.messages=async(req,res)=>{
     try{
         console.log(req.body)
         const {msg}=req.body
+        const groupId=req.body.groupId
         console.log(msg)
         const data=await messages.create({
         message:msg,
-        userId:req.user.id
+        userId:req.user.id,
+        groupId:groupId,
+        userName:req.user.name
     })
     res.json({message:data,success:true})
 
@@ -23,10 +26,10 @@ exports.messages=async(req,res)=>{
 
 exports.all_message=async(req,res)=>{
     try{
-        console.log(users.__proto__)
-        const data=await messages.findAll()
-        console.log(data);
-        res.json({Data:data,success:true})
+        const groupid =req.header("Authorization")
+        const data=await messages.findAll({where:{groupId:groupid}})
+        res.json({allData:data})
+        console.log(data)
     }catch(e){
         console.log(e)
         res.json({error:e,success:false})

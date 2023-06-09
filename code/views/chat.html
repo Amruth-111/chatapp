@@ -5,79 +5,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./public/signup.css">
-    <title>chatpage</title>
+    <title>Chat page</title>
+    <link rel="stylesheet" href="./public/chat.css">
 </head>
-<style>
-     li{
-        margin-top: 1px;
-        padding: 21px;
-    }
-    body{
-    text-align: center;
-    justify-content: center;
-    display: flex;
-   
-   background-color: rgb(241, 243, 246);
-}
-.container{
-    
-    margin-top: 0 auto;  
-    border-radius: 30px; 
-
-}
-
-img{
-    max-width: 100%;
-    border-radius: 130px;
-    margin-bottom: 20px;
-}
-
-form{
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-button{
-    color: white;
-    background-color: rgb(73, 188, 73);
-    padding: 10px 28px;
-    text-align: center;
-    font-family: inherit;
-    font-weight: bold;
-    font-size: large;
-    border-radius: 20px;
-    
-}
-button:hover{
-    background-color: rgb(72, 140, 72);
-}
-.input-container {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  padding: 30px;
-  background-color: #f2f2f2;
-}
-input[type="text"] {
-      width: 70%;
-      box-sizing: border-box;
-    }
-</style>
-    
 <body>
-  <div class="container card w-100 card shadow-lg my-5"> 
-    <!-- <div id="joined"></div> -->
-    <ul id="msg"></ul>
-   </div>
-   <form > 
-    <div class="input-container">
-        <input type="text" id="message"  placeholder="Enter message" required>
-        <button id="send">send</button>
-    </div>
-    </form>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js"></script>
+    <header>
+        <h2>Chat App<button id="logout"></button></h2><br>
+        <div class="flexible">
+            <h2 class="chats">Groups<button id="newgroup">Create</button></h2>
+        </div>
+    </header><br>
+   
+    <div id="group"></div>
+    <div id="gbutton"></div><br>
+
+    <h2 id="myGroups">My groups</h2><hr>
+
+    <div id="groupNames"></div>
+    <div id="groupButtons"></div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="chat.js"></script>
 </body>
-
-   
 </html>
