@@ -4,8 +4,8 @@ body{
 }
 
 header{
-    background-color: rgb(6, 168, 6);
-    color: white;
+    background-color: rgb(227, 236, 227);
+    color: rgb(2, 8, 0);
 }
 h2{
     font-weight: bold;
@@ -15,6 +15,7 @@ h2{
     text-align: center;
     margin-bottom: 10px;
     padding: 5px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 #logout{
