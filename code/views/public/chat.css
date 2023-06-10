@@ -38,7 +38,7 @@ h2{
     text-align: center;
 }
 #logoh3{
-    background-image: url("../images/membersLogo.png");
+    background-image: url("../images/memberslogo.png");
     background-repeat: no-repeat;
     background-size: contain;
     border-radius: 20px;
@@ -64,7 +64,7 @@ hr{
 }
 #manage{
     margin-top: 7px;
-    background-image: url("../images/membersnew.png");
+    background-image: url("../images/newmembers.png");
     background-repeat: no-repeat;
     background-size: contain;
     float: right;

@@ -35,6 +35,9 @@ msgtable.belongsTo(usertable)
 groupdb.belongsToMany(usertable,{through:usergroupdb})
 usertable.belongsToMany(groupdb,{through:usergroupdb})
 
+// msgtable.belongTo(groupdb)
+// groupdb.hasMany(msgtable)
+
 Sequelize.sync().then(()=>{
     app.listen(8000)
 }).catch(e=>{

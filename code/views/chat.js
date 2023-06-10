@@ -2,8 +2,17 @@
 
 const chat=document.getElementById("chat")
 const sendButton=document.getElementById('send')
+const logout=document.getElementById("logout");
 
+logout.addEventListener("click",async()=>{
+    if(confirm("do you want to log out?")){
+        window.location.href="./login.html"
+    }else{
+        window.location.reload();
+    }
 
+    
+})
 
 window.addEventListener("DOMContentLoaded",async(e)=>{
     try{
