@@ -14,7 +14,7 @@ async function submitSignup(e){
         email:email.value,
         password:password.value
     }
-    const data=await axios.post("http://localhost:8000/user/signup",my_obj)
+    const data=await axios.post("http://13.50.224.251:8000/user/signup",my_obj)
     alert( data.data.message)
     if(data.data.success===false){
         const signUpText=document.createTextNode(data.data.message)

@@ -31,7 +31,7 @@ async function getAllGroupNames(addGroup){
             parent.innerHTML=""
            }
            const token=localStorage.getItem("token")
-           const data=await axios.get("http://localhost:8000/group/getname",{
+           const data=await axios.get("http://13.50.224.251:8000/group/getname",{
             headers:{"Authentication":token}
         })
         const parent=document.getElementById("groupButtons")
@@ -92,7 +92,7 @@ document.getElementById('newgroup').onclick=async(e)=>{
                     gname:name.value
                 }
                 const token=localStorage.getItem("token")
-                const response=await axios.post("http://localhost:8000/group/addgroup",grp,{
+                const response=await axios.post("http://13.50.224.251:8000/group/addgroup",grp,{
                 headers:{"Authentication":token}
             })
             console.log(response)

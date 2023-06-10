@@ -37,6 +37,10 @@ usertable.belongsToMany(groupdb,{through:usergroupdb})
 
 // msgtable.belongTo(groupdb)
 // groupdb.hasMany(msgtable)
+app.use((req,res)=>{
+    res.sendFile(path.join(__dirname,`views/${req.url}`))
+    console.log(req.url)
+})
 
 Sequelize.sync().then(()=>{
     app.listen(8000)

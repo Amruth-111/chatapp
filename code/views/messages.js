@@ -19,7 +19,7 @@ function parseJwt (token) {
 window.addEventListener("DOMContentLoaded",async()=>{
     try{
          const groupId=localStorage.getItem("groupId")
-         const response=await axios.get("http://localhost:8000/message/all-messages",{headers:{"Authorization":groupId}})
+         const response=await axios.get("http://13.50.224.251:8000/message/all-messages",{headers:{"Authorization":groupId}})
  
          const showData=response.data.allData;
         //  console.log(showData[1].userName)
@@ -70,7 +70,7 @@ window.addEventListener("DOMContentLoaded",async()=>{
             groupId:groupId
         }
         const token=localStorage.getItem("token")
-        const response=await axios.post("http://localhost:8000/message/messagess",obj,{headers:{'Authentication':token}})
+        const response=await axios.post("http://13.50.224.251:8000/message/messagess",obj,{headers:{'Authentication':token}})
         console.log(response.data.message.userName,"jaska")
         showChatOnScreen(response.data.message.id,response.data.message.userName,response.data.message.message)
        
@@ -90,7 +90,7 @@ async function manageMembers(e){
         parent.style.display="none"
         document.getElementById('showMemebrs').style.display = 'block'
         const token=localStorage.getItem("token")
-        const response=await axios.get("http://localhost:8000/message/getuser",{
+        const response=await axios.get("http://13.50.224.251:8000/message/getuser",{
             headers:{"Authentication":token}
         })
 
@@ -102,7 +102,7 @@ async function manageMembers(e){
         for(let i=0;i<userDetails.length;i++){
                     arr1.push(userDetails[i].id)
                 } 
-        const result=await axios.get("http://localhost:8000/message/allusers",{
+        const result=await axios.get("http://13.50.224.251:8000/message/allusers",{
             headers:{"Authentication":token}
         })
         let arr2=[]
@@ -227,7 +227,7 @@ async function addMember(id){
         groupId:groupId
     }
     document.getElementById('showMemebrs').style.display = 'none'
-    const response=await axios.post("http://localhost:8000/message/addToGroup",obj)
+    const response=await axios.post("http://13.50.224.251:8000/message/addToGroup",obj)
 
    window.location.reload()
 
@@ -248,7 +248,7 @@ async function removeMember(id){
         if(confirm("Do you want to remove this user?")){
             members.removeChild(child)
             // confirm("Do you want to remove this user?")
-            const response=await axios.post("http://localhost:8000/message/removeMember",obj)
+            const response=await axios.post("http://13.50.224.251:8000/message/removeMember",obj)
             window.location.reload()
         }else{
             window.location.reload()
