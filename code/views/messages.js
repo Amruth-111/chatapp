@@ -15,7 +15,7 @@ function parseJwt (token) {
     return JSON.parse(jsonPayload);
 }
 
-
+// window reload code
 window.addEventListener("DOMContentLoaded",async()=>{
     try{
          const groupId=localStorage.getItem("groupId")
@@ -60,7 +60,7 @@ window.addEventListener("DOMContentLoaded",async()=>{
     }
  }
 
- console.log(sendbtn)
+ //send message button functionality
  sendbtn.onclick=async(e)=>{
     try{
         e.preventDefault();
@@ -71,7 +71,7 @@ window.addEventListener("DOMContentLoaded",async()=>{
         }
         const token=localStorage.getItem("token")
         const response=await axios.post("http://localhost:8000/message/messagess",obj,{headers:{'Authentication':token}})
-        console.log(response.data.message.userName,"jaska")
+        console.log(response.data.message.userName,)
         showChatOnScreen(response.data.message.id,response.data.message.userName,response.data.message.message)
        
     }catch(e){
@@ -93,7 +93,6 @@ async function manageMembers(e){
         const response=await axios.get("http://localhost:8000/message/getuser",{
             headers:{"Authentication":token}
         })
-
         const members=document.getElementById("alreadyMember")  
         const userDetails= response.data.allUser
         console.log(userDetails.length)

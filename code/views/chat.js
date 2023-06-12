@@ -4,6 +4,8 @@ const chat=document.getElementById("chat")
 const sendButton=document.getElementById('send')
 const logout=document.getElementById("logout");
 
+
+//logout button
 logout.addEventListener("click",async()=>{
     if(confirm("do you want to log out?")){
         window.location.href="./login.html"
@@ -14,6 +16,8 @@ logout.addEventListener("click",async()=>{
     
 })
 
+
+//window reload code
 window.addEventListener("DOMContentLoaded",async(e)=>{
     try{
         // e.preventDefault();
@@ -24,6 +28,7 @@ window.addEventListener("DOMContentLoaded",async(e)=>{
 })
 
 
+//to get all the groupname
 async function getAllGroupNames(addGroup){
     try{
         if(addGroup){
@@ -50,9 +55,12 @@ async function getAllGroupNames(addGroup){
 }
 
 
+//once you are inside a group
 async function insideGroup(id){
     try{
         localStorage.setItem("groupId",id)
+
+        //location wil lead to messages.html page
         window.location.href="./messages.html"
     }catch(e){
         console.log("error in inside group FE",err)
@@ -60,7 +68,6 @@ async function insideGroup(id){
 }
 
 //creating groups
-
 
 //create button
 document.getElementById('newgroup').onclick=async(e)=>{
@@ -84,6 +91,7 @@ document.getElementById('newgroup').onclick=async(e)=>{
 
         const creategrpbtn=document.getElementById("createButton")
         console.log(creategrpbtn)
+        //create button functionality
         creategrpbtn.onclick=async()=>{
             try{
                 console.log("create button is clicked")
@@ -106,5 +114,5 @@ document.getElementById('newgroup').onclick=async(e)=>{
 
 }
 
-//create button functionality
+
 
